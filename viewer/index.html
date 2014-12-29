@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Tuber</title>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<!-- <meta name="HandheldFriendly" content="True" /> -->
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+	</head>
+	<body>
+		<!-- <header></header> -->
+		<div id="container">
+			<div id="playerWrapper">
+				<div id="player"></div>
+				<div id="metadata">
+					<div id ="controls">
+						<button id="prev" class="controls">Previous</button>
+						<button id="playpause" class="controls">Pause</button>
+						<button id="next" class="controls">Next</button>
+					</div>
+					<div id="title"></div>
+				</div>
+			</div>
+			<div id="listWrapper">
+				<div id="tabs">
+					<div id="listtab" class="selectedTab tab">List</div>
+					<div id="addtab" class="tab">Add</div>
+				</div>
+				<ul id="list"></ul>
+				<!-- <input id="add" type="text" name="add" value="YouTube id" class="hidden"> -->
+			</div>
+		</div>
+	</body>
+	<script src="gapi.js"></script>
+	<script src="control.js"></script>
+	<script src="ui.js"></script>
+	<script src="util.js"></script>
+	<script src="script.js"></script>
+	<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+</html>
