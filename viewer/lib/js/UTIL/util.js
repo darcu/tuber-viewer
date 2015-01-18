@@ -5,10 +5,11 @@ function removeClass(element, className) {
 	}
 	var newClassName = '';
 	for (var i = 0, n = currentClasses.length; i < n; i++) {
-		newClassName += currentClasses[i] + ' ';
+		newClassName += ' ' + currentClasses[i];
 	}
-	element.className = newClassName;
+	element.className = newClassName.trim();
 }
+
 
 function addClass(element, className) {
 	var currentClasses = element.className;
@@ -18,3 +19,13 @@ function addClass(element, className) {
 		element.className = newClassName;
 	}
 }
+
+// fuck truthy
+function hasValue(x) {
+	return x !== null && x !== undefined;
+}
+
+// external interfaces
+module.exports.addClass = addClass;
+module.exports.removeClass = removeClass;
+module.exports.hasValue = hasValue;
