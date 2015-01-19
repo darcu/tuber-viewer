@@ -61,9 +61,12 @@ var listItem = function(args, buttons) {
 	li.vidID = args.id;
 	li.className = 'listItem';
 	li.innerHTML =
+		'<span class="listinfocontainer">' +
 		(args.duration ? '<span class="listinfo duration">' + args.duration + ' </span>' : '') +
 		'<span class="listinfo title">' + args.title + ' </span>' +
-		'<span class="listinfo by">' + '(by ' + args.channel + ')' + '</span>';
+		'<span class="listinfo by">' + '(by ' + args.channel + ')' + '</span>' +
+		'</span>';
+
 
 	li.addEventListener('click', function() {
 		control.select(args.id);
@@ -97,7 +100,7 @@ var listItem = function(args, buttons) {
 var drawListItem = function(args) {
 	var removeBut = document.createElement('button');
 	removeBut.innerHTML = '<i class="fa fa-times">';
-	removeBut.className = 'removeButton listButton';
+	removeBut.className = 'removeButton listButton button';
 	removeBut.addEventListener('click', function() {
 		LIST.removeID(args.id);
 		listElement.removeChild(li);
@@ -117,7 +120,7 @@ var drawListItem = function(args) {
 var drawSearchItem = function(args) {
 	var addBut = document.createElement('button');
 	addBut.innerHTML = '<i class="fa fa-plus">';
-	addBut.className = 'addButton listButton';
+	addBut.className = 'addButton listButton button';
 	addBut.addEventListener('click', function() {
 		LIST.addID(args.id);
 		listItems.push(args);
@@ -228,7 +231,7 @@ addSearch.addEventListener('keyup', function(e) {
 		META.searchFor(e.target.value).then(function(items) {
 			searchItems = {};
 
-			while(searchList.firstChild) {
+			while (searchList.firstChild) {
 				searchList.removeChild(searchList.firstChild);
 			}
 

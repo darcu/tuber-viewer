@@ -4,7 +4,7 @@
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<title>Tuber</title>
-		<link rel="stylesheet" type="text/css" href="lib/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<meta name="HandheldFriendly" content="True" />
@@ -17,9 +17,9 @@
 				<div id="player"></div>
 				<div id="metadata">
 					<div id ="controls">
-						<button id="prev" class="controls">Previous</button>
-						<button id="playpause" class="controls">Pause</button>
-						<button id="next" class="controls">Next</button>
+						<button id="prev" class="controls button"><i class="fa fa-backward"></i></button>
+						<button id="playpause" class="controls button"><i class="fa fa-play"></i></button>
+						<button id="next" class="controls button"><i class="fa fa-forward"></i></button>
 					</div>
 					<div id="title"></div>
 				</div>
@@ -29,14 +29,14 @@
 					<div id="listtab" class="tab">List</div>
 					<div id="addtab" class="selectedTab tab">Add</div>
 				</div>
-				<ol id="list" class="hidden"></ol>
+				<ul id="list" class="list hidden"></ul>
 				<!-- <input id="add" type="text" name="add" value="YouTube id" class="hidden"> -->
 				<div id="addWrapper" >
 					<input id="addSearch" type="search">
-					<ol id="searchList"></ol>
+					<ul id="searchList" class="list"></ul>
 				</div>
 			</div>
 		</div>
 	</body>
-	<script src="main.js"></script>
+	<script src="main.min.js"></script>
 </html>
