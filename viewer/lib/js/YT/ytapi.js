@@ -1,5 +1,6 @@
 var ytapi;
 
+var UTIL = require('../UTIL/util.js');
 require('google-client-api')().then(function(gapi) {
 	var API_KEY = 'AIzaSyDgdx2bOcqHiwnRpBNEE_5y88MQUay0sNU';
 	gapi.client.setApiKey(API_KEY);
@@ -44,6 +45,11 @@ function parseYTDuration(duration) {
 
 function getVideoMetadata(id) {
 	return new Promise(function(resolve, reject) {
+		if (!UTIL.hasValue(id)) {
+			reject('no ID');
+			return;
+		}
+
 		var req = ytapi.videos.list({
 			part: 'snippet,contentDetails', // to get the video metadata
 			id: id

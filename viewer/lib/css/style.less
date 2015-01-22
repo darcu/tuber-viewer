@@ -80,22 +80,12 @@ iframe {
 		cursor: pointer;
 		margin: 0;
 
-		.listinfocontainer {
-			overflow: hidden;
-			height: @list-item-height-desk;
-		}
-
-		.playing {
+		&.playing {
 			color: @red500;
 		}
 
-		.selected {
+		&.selected {
 			background-color: @red50;
-		}
-
-		.listButton {
-			float: right;
-			display: none;
 		}
 
 		&:hover {
@@ -104,6 +94,16 @@ iframe {
 			.listButton {
 				display: inline;
 			}
+		}
+
+		.listButton {
+			float: right;
+			display: none;
+		}
+
+		.listinfocontainer {
+			overflow: hidden;
+			height: @list-item-height-desk;
 		}
 	}
 	#tabs {
@@ -125,7 +125,7 @@ iframe {
 				background: @red400;
 			}
 
-			.selectedTab {
+			&.selectedTab {
 				color: @white;
 				border-bottom: 8px solid rgba(0, 0, 0, 0.3);
 			}

@@ -58,6 +58,7 @@ control.playPause = function() {
 
 var listItem = function(args, buttons) {
 	var li = document.createElement('li');
+
 	li.vidID = args.id;
 	li.className = 'listItem';
 	li.innerHTML =
@@ -188,10 +189,10 @@ var playState = function(type) {
 };
 
 // external interfaces
-var update = function(type, currentIndex, previousIndex) {
+var update = function(type, currID, prevID) {
 	currentSong();
 	playState(type);
-	control.setCurrent(currentIndex, previousIndex);
+	control.setCurrent(currID, prevID);
 	(type === 'LIST') && draw.list();
 };
 

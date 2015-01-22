@@ -1,20 +1,20 @@
 IMPROVS
 
+/smaller scale on desktop
+
+BETTER LIST
 thumbnails
 description
 views
-
-/smaller scale on desktop
-
 remove click to play (add button)
 center buttons (line height or smt is wrong)
 no default playlist
-
 big buttons over the screen (da!)
 
 
 
-bugz
+BUGZ
 
 title too long > no button
 double click on search plays
+keep play state when next (prev) i.e. pause remains paused

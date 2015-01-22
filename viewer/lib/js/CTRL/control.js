@@ -1,6 +1,9 @@
-var player;
+// var UI = require('../UI/ui.js');
 var s = require('./meta.js');
 var LIST = s.list;
+
+var UI;
+var player;
 
 function pause() {
 	player.pauseVideo();
@@ -19,13 +22,12 @@ function playVideo(id) {
 	stateChange();
 }
 
-var UI;
 function stateChange(type) {
 	// don't like this
 	if (!UI) {
 		UI = require('../UI/ui.js');
+		UI.update(type, LIST.getCurrentVideoID(), LIST.getPrevVideoID());
 	}
-	UI.update(type, LIST.getCurrentVideoIndex(), LIST.getPrevVideoIndex());
 }
 
 // exported
@@ -48,12 +50,12 @@ ctrl.playID = function(id) {
 }
 
 ctrl.playPrevVideo = function() {
-	var prevVidID = LIST.getPrevVideoID();
+	var prevVidID = LIST.getBackwardVideoID();
 	playVideo(prevVidID);
 };
 
 ctrl.playNextVideo = function() {
-	var nextVidID = LIST.getNextVideoID();
+	var nextVidID = LIST.getForwardVideoID();
 	playVideo(nextVidID);
 };
 

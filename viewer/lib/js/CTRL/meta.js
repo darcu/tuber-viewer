@@ -19,8 +19,8 @@ var list = (function() {
 		'cxtf0JcZgjg',
 	];
 
-	var currIndex = 0;
-	var prevIndex = 0;
+	var currID = vids[0];
+	var prevID = null;
 
 	l.getListLength = function() {
 		return vids.length;
@@ -34,39 +34,47 @@ var list = (function() {
 		return vids[i];
 	};
 
-	l.getCurrentVideoIndex = function() {
-		return currIndex;
-	};
-
-	l.getPrevVideoIndex = function() {
-		return prevIndex;
-	};
-
 	l.getCurrentVideoID = function() {
-		return vids[currIndex];
-	};
-
-	l.getNextVideoID = function() {
-		if (currIndex + 1 >= vids.length) {
-			return vids[0];
-		} else {
-			return vids[currIndex + 1];
-		}
+		return currID;
 	};
 
 	l.getPrevVideoID = function() {
-		if (currIndex - 1 < 0) {
-			return vids[vids.length - 1];
-		} else {
-			return vids[currIndex - 1];
+		return prevID;
+	};
+
+	l.getBackwardVideoID = function() {
+		var ci = vids.indexOf(currID);
+		var bID = null;
+
+		if (ci !== -1) {
+			if (ci - 1 >= 0) {
+				bID = vids[ci - 1];
+			} else if (vids.length !== 0) {
+				bID = vids[vids.length - 1];
+			}
 		}
+
+		return bID;
+	};
+
+	l.getForwardVideoID = function() {
+		var ci = vids.indexOf(currID);
+		var fID = null;
+
+		if (ci !== -1) {
+			if (ci + 1 < vids.length) {
+				fID = vids[ci + 1];
+			} else if (vids.length !== 0) {
+				fID = vids[0];
+			}
+		}
+
+		return fID;
 	};
 
 	l.setCurrentID = function(ID) {
-		if (vids.indexOf(ID) !== -1) {
-			prevIndex = currIndex;
-			currIndex = vids.indexOf(ID);
-		}
+		prevID = currID;
+		currID = ID;
 	};
 
 	l.removeID = function(id) {
