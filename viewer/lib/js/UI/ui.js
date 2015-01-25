@@ -8,6 +8,7 @@ var LIST = m.list;
 var playPauseButton = document.getElementById('playpause');
 var nextButton = document.getElementById('next');
 var prevButton = document.getElementById('prev');
+var repeatButton = document.getElementById('repeat');
 var songTitle = document.getElementById('title');
 var addTab = document.getElementById('addtab');
 var listTab = document.getElementById('listtab');
@@ -15,66 +16,76 @@ var listElement = document.getElementById('list');
 var addWrapper = document.getElementById('addWrapper');
 var searchList = document.getElementById('searchList');
 var addSearch = document.getElementById('addSearch');
-var listItems = {};
-var searchItems = {};
+var songElements = {};
+
+var listItems = [];
+var searchItems = [];
 
 // control interfaces
-var control = {};
+var uicontrol = {};
 var selectedSong = null;
 
-control.setCurrent = function(id, pid) {
-	if (UTIL.hasValue(id) && id !== pid) {
-		UTIL.hasValue(pid) && UTIL.removeClass(listItems[pid], 'playing');
-		UTIL.addClass(listItems[id], 'playing');
+uicontrol.setCurrent = function(id, pid) {
+	if (songElements[pid] && UTIL.hasValue(id) && id !== pid) {
+		UTIL.hasValue(pid) && UTIL.removeClass(songElements[pid], 'playing');
+		UTIL.addClass(songElements[id], 'playing');
 	}
 };
 
-control.select = function(id) {
-	selectedSong && control.unselect(selectedSong);
+uicontrol.select = function(id) {
+	selectedSong && uicontrol.unselect(selectedSong);
 
 	selectedSong = id;
-	UTIL.addClass(listItems[id], 'selected');
+	UTIL.addClass(songElements[id], 'selected');
 };
 
-control.unselect = function(id) {
-	UTIL.removeClass(listItems[id], 'selected');
+uicontrol.unselect = function(id) {
+	UTIL.removeClass(songElements[id], 'selected');
 };
 
-control.playID = function(id) {
+uicontrol.playID = function(id) {
 	CTRL.playID(id);
 };
 
-control.playNext = function() {
+uicontrol.playNext = function() {
 	CTRL.playNextVideo();
 };
 
-control.playPrev = function() {
+uicontrol.playPrev = function() {
 	CTRL.playPrevVideo();
 };
 
-control.playPause = function() {
+uicontrol.playPause = function() {
 	CTRL.playPause();
 };
 
-var listItem = function(args, buttons) {
-	var li = document.createElement('li');
+uicontrol.toggleRepeat = function() {
+	CTRL.toggleRepeat();
 
-	li.vidID = args.id;
-	li.className = 'listItem';
-	li.innerHTML =
-		'<span class="listinfocontainer">' +
+	UTIL.addOrRemoveClass(repeatButton, 'light', CTRL.getRepeatState());
+};
+
+function createListItemContent(args) {
+	return '<span class="listinfocontainer">' +
 		(args.duration ? '<span class="listinfo duration">' + args.duration + ' </span>' : '') +
 		'<span class="listinfo title">' + args.title + ' </span>' +
 		'<span class="listinfo by">' + '(by ' + args.channel + ')' + '</span>' +
 		'</span>';
+}
 
+var newListItem = function(args, buttons) {
+	var li = document.createElement('li');
+
+	li.vidID = args.id;
+	li.className = 'listItem';
+	li.innerHTML = createListItemContent(args);
 
 	li.addEventListener('click', function() {
-		control.select(args.id);
+		uicontrol.select(args.id);
 	});
 
 	li.addEventListener('dblclick', function() {
-		control.playID(args.id);
+		uicontrol.playID(args.id);
 	});
 
 	// touch control
@@ -86,8 +97,8 @@ var listItem = function(args, buttons) {
 	li.addEventListener('touchend', function(e) {
 		// check whether tap or swipe
 		if (Math.abs(e.changedTouches[0].pageY - ty) < 15) {
-			control.select(args.id);
-			control.playID(args.id);
+			uicontrol.select(args.id);
+			uicontrol.playID(args.id);
 		}
 	});
 
@@ -98,20 +109,45 @@ var listItem = function(args, buttons) {
 	return li;
 };
 
+var newButton = function(type, handler) {
+	var but = document.createElement('button');
+	UTIL.addClass(but, 'listButton button');
+	switch (type) {
+		case 'REMOVE':
+			but.title = 'Remove video'; // hover tooltip
+			but.innerHTML = '<i class="fa fa-times">';
+			UTIL.addClass(but, 'removeButton');
+			break;
+		case 'ADD':
+			but.title = 'Add video to the playlist';
+			but.innerHTML = '<i class="fa fa-plus">';
+			UTIL.addClass(but, 'addButton');
+			break;
+	}
+
+	but.addEventListener('click', handler);
+	return but;
+};
+
 var drawListItem = function(args) {
-	var removeBut = document.createElement('button');
-	removeBut.innerHTML = '<i class="fa fa-times">';
-	removeBut.className = 'removeButton listButton button';
-	removeBut.addEventListener('click', function() {
+	var removeBut = newButton('REMOVE', function(e) {
+		e.stopPropagation();
+
 		LIST.removeID(args.id);
+
+		delete songElements[args.id];
 		listElement.removeChild(li);
 	});
 
-	var li = new listItem(args, [removeBut]);
-	listItems[args.id] = li;
+	var li = newListItem(args, [removeBut]);
+	songElements[args.id] = li;
 
 	if (args.bid) {
-		listElement.insertBefore(li, listItems[args.bid]);
+		var bindex = listItems.indexOf(args.bid);
+
+		if (bindex !== -1) {
+			listElement.insertBefore(li, songElements[listItems[bindex]]);
+		}
 	} else {
 		// push
 		listElement.appendChild(li);
@@ -119,23 +155,29 @@ var drawListItem = function(args) {
 };
 
 var drawSearchItem = function(args) {
-	var addBut = document.createElement('button');
-	addBut.innerHTML = '<i class="fa fa-plus">';
-	addBut.className = 'addButton listButton button';
-	addBut.addEventListener('click', function() {
+	var addBut = newButton('ADD', function(e) {
+		e.stopPropagation();
+
 		LIST.addID(args.id);
-		listItems.push(args);
+		addToPlayList(args);
 		searchList.removeChild(li);
 	});
 
-	var li = new listItem(args, [addBut]);
-	searchItems[args.id] = li;
+	var li = newListItem(args, [addBut]);
+	songElements[args.id] = li;
+
 	searchList.appendChild(li);
+};
+
+function addToPlayList(args) {
+	listItems.push(args.id);
+	drawListItem(args);
 }
 
-listItems.push = function(args) {
-	drawListItem(args);
-};
+function addToSearchList(args) {
+	searchItems.push(args.id);
+	drawSearchItem(args);
+}
 
 var draw;
 draw = (function() {
@@ -146,17 +188,19 @@ draw = (function() {
 
 		vids.forEach(function(vidID) {
 			META.getVideoData(vidID).then(function(vidData) {
-				listItems.push(vidData);
-			});
+				addToPlayList(vidData);
+			}, UTIL.err);
 		});
 	};
 
 	d.pause = function() {
-		playPauseButton.innerHTML = 'Pause';
+		playPauseButton.title = 'Pause video';
+		playPauseButton.innerHTML = '<i class="fa fa-pause">';
 	};
 
 	d.play = function() {
-		playPauseButton.innerHTML = 'Play';
+		playPauseButton.title = 'Play video';
+		playPauseButton.innerHTML = '<i class="fa fa-play">';
 	};
 
 	d.setSongInfo = function(title, by) {
@@ -174,10 +218,13 @@ var currentSong = function() {
 	META.getCurrentVideoData().then(function(vidData) {
 		draw.setTitle(vidData.title);
 		draw.setSongInfo(vidData.title, vidData.channel);
-	});
+	}, UTIL.err);
 };
 
 var playState = function(type) {
+	console.log('play state');
+	console.log(type);
+
 	switch (type) {
 		case 'PLAYING':
 			draw.pause();
@@ -192,7 +239,7 @@ var playState = function(type) {
 var update = function(type, currID, prevID) {
 	currentSong();
 	playState(type);
-	control.setCurrent(currID, prevID);
+	uicontrol.setCurrent(currID, prevID);
 	(type === 'LIST') && draw.list();
 };
 
@@ -200,15 +247,19 @@ module.exports.update = update;
 
 // listeners
 nextButton.addEventListener('click', function() {
-	control.playNext();
+	uicontrol.playNext();
 });
 
 prevButton.addEventListener('click', function() {
-	control.playPrev();
+	uicontrol.playPrev();
 });
 
 playPauseButton.addEventListener('click', function() {
-	control.playPause();
+	uicontrol.playPause();
+});
+
+repeatButton.addEventListener('click', function() {
+	uicontrol.toggleRepeat();
 });
 
 addTab.addEventListener('click', function() {
@@ -230,15 +281,22 @@ listTab.addEventListener('click', function() {
 addSearch.addEventListener('keyup', function(e) {
 	if (e.keyCode === 13) {
 		META.searchFor(e.target.value).then(function(items) {
-			searchItems = {};
-
-			while (searchList.firstChild) {
-				searchList.removeChild(searchList.firstChild);
-			}
+			clearSearchList();
 
 			for (var i = 0, n = items.length; i < n; i++) {
-				drawSearchItem(items[i]);
+				addToSearchList(items[i]);
 			}
-		});
+		}, UTIL.err);
 	}
 });
+
+
+function clearSearchList() {
+	searchItems = [];
+
+	while (searchList.firstChild) {
+		searchList.removeChild(searchList.firstChild);
+	}
+
+	// TODO check if the songs are cleared
+}

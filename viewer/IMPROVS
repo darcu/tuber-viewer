@@ -1,6 +1,7 @@
 IMPROVS
 
 /smaller scale on desktop
+/repeat button
 
 BETTER LIST
 thumbnails
@@ -10,11 +11,13 @@ remove click to play (add button)
 center buttons (line height or smt is wrong)
 no default playlist
 big buttons over the screen (da!)
-
-
+smaller title and info on mobile
 
 BUGZ
 
+one line list text
+text shadow in desktop
+no title/button update
 title too long > no button
 double click on search plays
 keep play state when next (prev) i.e. pause remains paused

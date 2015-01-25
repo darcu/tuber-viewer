@@ -11,8 +11,8 @@ require('google-client-api')().then(function(gapi) {
 		// nu-mi place aici da pula mea
 		var UI = require('../UI/ui.js');
 		UI.update('LIST');
-	});
-});
+	}, UTIL.err);
+}, UTIL.err);
 
 // stolen from somewhere
 function parseYTDuration(duration) {
@@ -47,6 +47,11 @@ function getVideoMetadata(id) {
 	return new Promise(function(resolve, reject) {
 		if (!UTIL.hasValue(id)) {
 			reject('no ID');
+			return;
+		}
+
+		if (!ytapi) {
+			reject('YouTube API not loaded');
 			return;
 		}
 

@@ -5,18 +5,9 @@ var list = (function() {
 	var l = {};
 
 	var vids = [
-		'e-ORhEE9VVg',
 		'Jcu1AHaTchM',
-		'QRgPIbSX1mg',
 		'5OVvJOeUdUs',
-		'MHaKie-Jy2g',
-		'lMUMwxvmBWE',
-		'PZlKAa_GShc',
-		'CvFH_6DNRCY',
-		'bw5pi9nUGJ8',
-		'Sx1mHSo7ug4',
-		'SE6bl_2xQ70',
-		'cxtf0JcZgjg',
+		'Zh3VENebCgk'
 	];
 
 	var currID = vids[0];

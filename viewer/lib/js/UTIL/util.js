@@ -20,12 +20,26 @@ function addClass(element, className) {
 	}
 }
 
+function addOrRemoveClass(element, className, condition) {
+	if (condition) {
+		addClass(element, className);
+	} else {
+		removeClass(element, className);
+	}
+}
+
 // fuck truthy
 function hasValue(x) {
 	return x !== null && x !== undefined;
 }
 
+function err(err) {
+	console.error(err);
+}
+
 // external interfaces
+module.exports.err = err;
 module.exports.addClass = addClass;
 module.exports.removeClass = removeClass;
+module.exports.addOrRemoveClass = addOrRemoveClass;
 module.exports.hasValue = hasValue;

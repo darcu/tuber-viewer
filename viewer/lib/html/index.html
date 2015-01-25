@@ -17,22 +17,23 @@
 				<div id="player"></div>
 				<div id="metadata">
 					<div id ="controls">
-						<button id="prev" class="controls button"><i class="fa fa-backward"></i></button>
-						<button id="playpause" class="controls button"><i class="fa fa-play"></i></button>
-						<button id="next" class="controls button"><i class="fa fa-forward"></i></button>
+						<button id="prev" title = "Previous video" class="controls button"><i class="fa fa-backward"></i></button>
+						<button id="playpause" title = "Play video" class="controls button"><i class="fa fa-play"></i></button>
+						<button id="next" title = "Next video" class="controls button"><i class="fa fa-forward"></i></button>
+						<button id="repeat" title = "Repeat song" class="controls button"><i class="fa fa-repeat"></i></button>
 					</div>
 					<div id="title"></div>
 				</div>
 			</div>
 			<div id="listWrapper">
 				<div id="tabs">
-					<div id="listtab" class="tab">List</div>
-					<div id="addtab" class="selectedTab tab">Add</div>
+					<div id="listtab" title="Current playlist" class="tab">List</div>
+					<div id="addtab" title="Search or add videos to the playlist" class="selectedTab tab">Add</div>
 				</div>
 				<ul id="list" class="list hidden"></ul>
 				<!-- <input id="add" type="text" name="add" value="YouTube id" class="hidden"> -->
 				<div id="addWrapper" >
-					<input id="addSearch" type="search">
+					<input id="addSearch" type="search" placeholder="Search for a video ...">
 					<ul id="searchList" class="list"></ul>
 				</div>
 			</div>

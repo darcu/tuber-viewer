@@ -1,11 +1,30 @@
+@red50: #FFEBEE;
+@red600: #E53935;
 @red500: #F44336;
 @red400: #EF5350;
-@red50: #FFEBEE;
+@red200: #EF9A9A;
+
+@pink50: #FCE4EC;
+@pink100: #F8BBD0;
+@pink200: #F48FB1;
+@pink500: #E91E63;
+@pink600: #D81B60;
+@pink900: #880E4F;
+
+@pinkA400: #F50057;
+
 @white: #FFFFFF;
+@black: #000000;
 @bg-gray: #F9F9F9;
+
 @player-width: 853px;
 @list-item-height-desk: 40px;
 @list-item-height-mobi: 60px;
+
+@mainAccentColor: @pink500;
+@mainAccentHoverColor: @pink600;
+@textShadowColor: @pink900;
+@selectedColor: @pink50;
 
 *, *:before, *:after {
 	box-sizing: border-box;
@@ -36,20 +55,17 @@ iframe {
 	background: transparent;
 	width: @list-item-height-desk;
 	min-height: @list-item-height-desk;
-	// line-height: @list-item-height-desk;
 	font-size: 30px;
 	margin: 0;
 	padding: 0;
 
-	color: #444;
-
 	&:hover {
 		color: @white;
-		background: @red500;
+		background: @mainAccentColor;
 	}
 
 	&:active {
-		color: @red500;
+		color: @mainAccentColor;
 		background: transparent;
 	}
 }
@@ -64,9 +80,23 @@ iframe {
 	display: flex;
 	flex-direction: column;
 
+	#controls {
+		.button {
+			width: @list-item-height-mobi;
+			line-height: @list-item-height-mobi;
+			text-shadow: 1px 1px 2px @textShadowColor;
+
+			&.light {
+				text-shadow: 2px 2px 4px @textShadowColor;
+			}
+		}
+	}
+
 	#title {
 		padding-left: 1em;
 		overflow: hidden;
+		line-height: @list-item-height-mobi;
+		text-shadow: 1px 1px 2px @textShadowColor;
 	}
 
 	.list {
@@ -81,15 +111,15 @@ iframe {
 		margin: 0;
 
 		&.playing {
-			color: @red500;
+			color: @mainAccentColor;
 		}
 
 		&.selected {
-			background-color: @red50;
+			background-color: @selectedColor;
 		}
 
 		&:hover {
-			background-color: @red50;
+			background-color: @selectedColor;
 
 			.listButton {
 				display: inline;
@@ -107,13 +137,13 @@ iframe {
 		}
 	}
 	#tabs {
-		color: @white;
-		background: #F44336;
+		color: @black;
+		background: @mainAccentColor;
 		display: flex;
 		justify-content: center;
+		text-shadow: 1px 1px 2px @textShadowColor;
 
 		.tab {
-			color: #000000;
 			height: @list-item-height-desk; // for border-box
 			flex-grow: 1;
 			text-align: center;
@@ -122,7 +152,7 @@ iframe {
 
 			&:hover {
 				color: @white;
-				background: @red400;
+				background: @mainAccentHoverColor;
 			}
 
 			&.selectedTab {
@@ -174,14 +204,28 @@ iframe {
 		top: 0;
 		max-width: @player-width;
 		min-width: 200px;
+
+		#playerWrapper {
+			flex: 1 0 10%;
+			color: @white;
+			background-color: @mainAccentColor;
+
+			.button {
+				color: inherit;
+				background: inherit;
+
+				&:hover {
+					background: @mainAccentHoverColor;
+				}
+			}
+		}
+
+		#listWrapper {
+			flex: auto;
+			overflow-y: auto;
+		}
 	}
-	#playerWrapper {
-		flex: 1 0 10%;
-	}
-	#listWrapper {
-		flex: auto;
-		overflow-y: auto;
-	}
+
 }
 @media screen and (min-width:1280px) {
 	#container {

@@ -31,12 +31,16 @@ youtube.init(function() {
 			showinfo: 0 // no video info
 		},
 		events: {
-			// 'onReady': playerReady,
+			'onReady': playerReady,
 			'onStateChange': playerStateChange
 		}
 	});
 
 	module.exports = ytplayer;
+
+	function playerReady() {
+		CTRL.event('YT_PLAYER_READY');
+	}
 
 	function playerStateChange(event) {
 		switch (event.data) {

@@ -4,6 +4,7 @@ var LIST = s.list;
 
 var UI;
 var player;
+var repeat = false;
 
 function pause() {
 	player.pauseVideo();
@@ -14,18 +15,17 @@ function play() {
 }
 
 function playVideo(id) {
-	// require here to wait for the player script to load (maybe find a better way)
-	player = require('../YT/ytplayer.js');
-
 	player.loadVideoById(id);
 	LIST.setCurrentID(id);
-	stateChange();
+	stateChange('PLAYING');
 }
 
 function stateChange(type) {
 	// don't like this
 	if (!UI) {
 		UI = require('../UI/ui.js');
+		UI.update(type, LIST.getCurrentVideoID(), LIST.getPrevVideoID());
+	} else {
 		UI.update(type, LIST.getCurrentVideoID(), LIST.getPrevVideoID());
 	}
 }
@@ -47,7 +47,7 @@ ctrl.playIndex = function(i) {
 
 ctrl.playID = function(id) {
 	playVideo(id);
-}
+};
 
 ctrl.playPrevVideo = function() {
 	var prevVidID = LIST.getBackwardVideoID();
@@ -55,13 +55,41 @@ ctrl.playPrevVideo = function() {
 };
 
 ctrl.playNextVideo = function() {
-	var nextVidID = LIST.getForwardVideoID();
+	var nextVidID;
+	if (!repeat) {
+		nextVidID = LIST.getForwardVideoID();
+	} else {
+		nextVidID = LIST.getCurrentVideoID();
+	}
+
 	playVideo(nextVidID);
 };
 
+ctrl.toggleRepeat = function() {
+	repeat = !repeat;
+	console.log('toggle repeat ' + repeat);
+};
+
+ctrl.getRepeatState = function() {
+	return repeat;
+};
+
 ctrl.event = function(type) {
-	stateChange(type);
-	(type === 'ENDED') && ctrl.playNextVideo();
+	switch (type) {
+		case 'YT_PLAYER_READY':
+			player = require('../YT/ytplayer.js');
+			break;
+		case 'ENDED':
+			ctrl.playNextVideo();
+			stateChange(type);
+			break;
+		case 'PAUSED':
+			stateChange(type);
+			break;
+		case 'PAUSED':
+			stateChange(type);
+			break;
+	}
 };
 
 ctrl.getState = function() {
