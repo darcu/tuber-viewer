@@ -10,6 +10,7 @@ var nextButton = document.getElementById('next');
 var prevButton = document.getElementById('prev');
 var repeatButton = document.getElementById('repeat');
 var songTitle = document.getElementById('title');
+var songDescription = document.getElementById('description');
 var addTab = document.getElementById('addtab');
 var listTab = document.getElementById('listtab');
 var listElement = document.getElementById('list');
@@ -211,6 +212,11 @@ draw = (function() {
 		document.title = '▶ ' + title + ' - Tuber';
 	};
 
+	d.description = function(description) {
+		description = description.replace(/(?:\r\n|\r|\n)/g, '<br />');
+		songDescription.innerHTML = description;
+	};
+
 	return d;
 }());
 
@@ -218,6 +224,7 @@ var currentSong = function() {
 	META.getCurrentVideoData().then(function(vidData) {
 		draw.setTitle(vidData.title);
 		draw.setSongInfo(vidData.title, vidData.channel);
+		draw.description(vidData.description)
 	}, UTIL.err);
 };
 

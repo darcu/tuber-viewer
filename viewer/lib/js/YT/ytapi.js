@@ -62,9 +62,13 @@ function getVideoMetadata(id) {
 
 		req.then(function(resp) {
 			if (resp) {
+				console.log('YT data');
+				console.log(resp.result.items[0].snippet.description);
+
 				var data = {};
 				data.id = id;
 				data.title = resp.result.items[0].snippet.title;
+				data.description = resp.result.items[0].snippet.description;
 				data.channel = resp.result.items[0].snippet.channelTitle;
 				data.duration = parseYTDuration(resp.result.items[0].contentDetails.duration);
 
