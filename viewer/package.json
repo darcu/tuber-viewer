@@ -17,6 +17,7 @@
   "author": "Lucian Parfeni - darcu.ro@gmail.com ",
   "license": "ISC",
   "dependencies": {
+    "google-client-api": "^1.0.4",
     "googleapis": "^1.1.0",
     "youtube-iframe-player": "^0.1.0"
   }

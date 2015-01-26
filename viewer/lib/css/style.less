@@ -25,6 +25,9 @@
 @mainAccentHoverColor: @pink600;
 @textShadowColor: @pink900;
 @selectedColor: @pink50;
+.default-text-shadow {
+	text-shadow: 1px 1px 2px @textShadowColor;
+}
 
 *, *:before, *:after {
 	box-sizing: border-box;
@@ -84,10 +87,9 @@ iframe {
 		.button {
 			width: @list-item-height-mobi;
 			line-height: @list-item-height-mobi;
-			text-shadow: 1px 1px 2px @textShadowColor;
 
 			&.light {
-				text-shadow: 2px 2px 4px @textShadowColor;
+				text-shadow: 1px 1px 2px @textShadowColor;
 			}
 		}
 	}
@@ -96,7 +98,6 @@ iframe {
 		padding-left: 1em;
 		overflow: hidden;
 		line-height: @list-item-height-mobi;
-		text-shadow: 1px 1px 2px @textShadowColor;
 	}
 
 	.list {
@@ -141,7 +142,7 @@ iframe {
 		background: @mainAccentColor;
 		display: flex;
 		justify-content: center;
-		text-shadow: 1px 1px 2px @textShadowColor;
+		.default-text-shadow;
 
 		.tab {
 			height: @list-item-height-desk; // for border-box
@@ -209,6 +210,7 @@ iframe {
 			flex: 1 0 10%;
 			color: @white;
 			background-color: @mainAccentColor;
+			.default-text-shadow
 
 			.button {
 				color: inherit;
