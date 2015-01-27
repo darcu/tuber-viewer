@@ -31,6 +31,10 @@
 	margin: 0;
 	padding: 0
 }
+.no-border-or-outline {
+	border: none;
+	outline: none;
+}
 .default-left-padding {
 	padding-left: 2rem;
 }
@@ -44,7 +48,11 @@ body {
 	font-family: 'Roboto', sans-serif;
 	background: @bg-gray;
 	font-size: @default-font-size;
-	line-height: @list-item-height-desk
+	line-height: @list-item-height-desk;
+	background-image: url(/img/5000.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
 }
 iframe {
 	vertical-align: bottom
@@ -53,12 +61,11 @@ iframe {
 	display: none
 }
 .button {
-	border: none;
-	outline: none;
+	.no-border-or-outline;
 	background: transparent;
 	width: @list-item-height-desk;
 	min-height: @list-item-height-desk;
-	font-size: 24px;
+	font-size: 2rem;
 	.no-padd-or-margin;
 	&:hover {
 		color: @white;
@@ -74,7 +81,7 @@ iframe {
 	width: 100%;
 	margin: 0 auto;
 	top: 10vh;
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0px 64px rgba(0, 0, 0, 0.5);
 	background: @bg-gray;
 	display: flex;
 	flex-direction: column;
@@ -96,7 +103,7 @@ iframe {
 			overflow: hidden;
 			line-height: @list-item-height-desk;
 			font-weight: 700;
-			font-size: 16px;
+			font-size: 1.2rem;
 			.default-left-padding;
 		}
 		#description {
@@ -130,7 +137,8 @@ iframe {
 	#addSearch {
 		width: 100%;
 		height: @list-item-height-desk;
-		padding-left: 10px
+		padding-left: 10px;
+		.no-border-or-outline;
 	}
 	.list {
 		.no-padd-or-margin
