@@ -15,15 +15,16 @@
 		<div id="container">
 			<div id="playerWrapper">
 				<div id="player"></div>
+				<div id ="controls">
+					<button id="prev" title = "Previous video" class="controls button"><i class="fa fa-backward"></i></button>
+					<button id="playpause" title = "Play video" class="controls button"><i class="fa fa-play"></i></button>
+					<button id="next" title = "Next video" class="controls button"><i class="fa fa-forward"></i></button>
+					<button id="repeat" title = "Repeat song" class="controls button"><i class="fa fa-repeat"></i></button>
+				</div>
 				<div id="metadata">
-					<div id ="controls">
-						<button id="prev" title = "Previous video" class="controls button"><i class="fa fa-backward"></i></button>
-						<button id="playpause" title = "Play video" class="controls button"><i class="fa fa-play"></i></button>
-						<button id="next" title = "Next video" class="controls button"><i class="fa fa-forward"></i></button>
-						<button id="repeat" title = "Repeat song" class="controls button"><i class="fa fa-repeat"></i></button>
-					</div>
 					<div id="title"></div>
 					<div id="description"></div>
+					<div id="descriptionExpand"><a><i class="fa fa-angle-double-down"></i></a></div>
 				</div>
 			</div>
 			<div id="listWrapper">
@@ -34,7 +35,7 @@
 				<ul id="list" class="list hidden"></ul>
 				<!-- <input id="add" type="text" name="add" value="YouTube id" class="hidden"> -->
 				<div id="addWrapper" >
-					<input id="addSearch" type="search" placeholder="Search for a video ...">
+					<input id="addSearch" type="search" placeholder="Search for a video, paste an URL or a video code ...">
 					<ul id="searchList" class="list"></ul>
 				</div>
 			</div>

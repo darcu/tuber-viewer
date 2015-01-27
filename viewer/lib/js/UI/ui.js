@@ -11,6 +11,7 @@ var prevButton = document.getElementById('prev');
 var repeatButton = document.getElementById('repeat');
 var songTitle = document.getElementById('title');
 var songDescription = document.getElementById('description');
+var descriptionExpand = document.getElementById('descriptionExpand');
 var addTab = document.getElementById('addtab');
 var listTab = document.getElementById('listtab');
 var listElement = document.getElementById('list');
@@ -25,6 +26,7 @@ var searchItems = [];
 // control interfaces
 var uicontrol = {};
 var selectedSong = null;
+var descriptionExpanded = false;
 
 uicontrol.setCurrent = function(id, pid) {
 	if (songElements[pid] && UTIL.hasValue(id) && id !== pid) {
@@ -65,6 +67,18 @@ uicontrol.toggleRepeat = function() {
 
 	UTIL.addOrRemoveClass(repeatButton, 'light', CTRL.getRepeatState());
 };
+
+uicontrol.toggleExpandDescription = function() {
+	descriptionExpanded = !descriptionExpanded;
+
+	if (descriptionExpanded) {
+		descriptionExpand.textContent = 'Show less ...';
+	} else {
+		descriptionExpand.textContent = 'Show more ...';
+	}
+
+	UTIL.addOrRemoveClass(songDescription, 'expanded', descriptionExpanded);
+}
 
 function createListItemContent(args) {
 	return '<span class="listinfocontainer">' +
@@ -267,6 +281,10 @@ playPauseButton.addEventListener('click', function() {
 
 repeatButton.addEventListener('click', function() {
 	uicontrol.toggleRepeat();
+});
+
+descriptionExpand.addEventListener('click', function() {
+	uicontrol.toggleExpandDescription();
 });
 
 addTab.addEventListener('click', function() {

@@ -1,31 +1,37 @@
 // colors n stuff
-@red50:#FFEBEE;
-@red600:#E53935;
-@red500:#F44336;
-@red400:#EF5350;
-@red200:#EF9A9A;
-@pink50:#FCE4EC;
-@pink100:#F8BBD0;
-@pink200:#F48FB1;
-@pink500:#E91E63;
-@pink600:#D81B60;
-@pink900:#880E4F;
-@pinkA400:#F50057;
-@white: #FFFFFF;
-@black: #000000;
-@bg-gray: #F9F9F9;
+@import 'colors.less';
+
 @player-width: 853px;
 @list-item-height-desk: 40px;
 @list-item-height-mobi: 60px;
 @default-font-size: 12px;
-// config variables
+
+@textColor: @textblack87;
+@textColorInvert: @textwhite100;
+@textShadowColorInvert: @textblack26;
+
+@color300: @teal300;
+@color400: @teal400;
+@color500: @teal500;
+@color700: @teal700;
+
+@accent200: @limeA200;
+@accent400: @limeA400;
+@accent700: @limeA700;
+
 @mainAccentColor: @pink500;
 @mainAccentHoverColor: @pink600;
-@textShadowColor: @pink900;
+
 @selectedColor: @pink50;
+
+@fg-gray: @grey50;
+@bg-gray: @grey200;
+
+@main-black: @grey900;
+
 // mixins
-.default-text-shadow {
-	text-shadow: 1px 1px 2px @textShadowColor
+.default-text-shadow-invert {
+	text-shadow: 1px 1px @textShadowColorInvert;
 }
 .no-padd-or-margin {
 	margin: 0;
@@ -36,7 +42,7 @@
 	outline: none;
 }
 .default-left-padding {
-	padding-left: 2rem;
+	padding-left: 3rem;
 }
 *, *:before, *:after {
 	box-sizing: border-box;
@@ -46,10 +52,14 @@
 body {
 	.no-padd-or-margin;
 	font-family: 'Roboto', sans-serif;
+
+	color: @textColor;
 	background: @bg-gray;
+
 	font-size: @default-font-size;
 	line-height: @list-item-height-desk;
-	background-image: url(/img/5000.jpg);
+
+	// background-image: url(/img/pinkpoly.png);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
@@ -62,61 +72,110 @@ iframe {
 }
 .button {
 	.no-border-or-outline;
+	color: @textColor;
 	background: transparent;
 	width: @list-item-height-desk;
 	min-height: @list-item-height-desk;
 	font-size: 2rem;
 	.no-padd-or-margin;
 	&:hover {
-		color: @white;
-		background: @mainAccentColor
+		color: @textColorInvert;
+		background-color: @accent700;
 	}
 	&:active {
-		color: @mainAccentColor;
-		background: transparent
+		color: @accent700;
+		background-color: transparent;
 	}
 }
 #container {
 	position: relative;
 	width: 100%;
-	margin: 0 auto;
-	top: 10vh;
+	margin: 5rem auto;
 	box-shadow: 0 0px 64px rgba(0, 0, 0, 0.5);
-	background: @bg-gray;
+	background: @fg-gray;
 	display: flex;
 	flex-direction: column;
 	#playerWrapper {
-		// text-align: center;
+		color: @textColorInvert;
+		background-color: @color700;
 		#controls {
 			display: flex;
 			.button {
+				color: inherit;
+				background-color: inherit;
+				line-height: 3.5rem;
 				flex-grow: 1;
-				// min-width: @list-item-height-desk;
-				// line-height: @list-item-height-desk;
 				&.light {
-					// color: @textShadowColor;
-					text-shadow: 0px 0px 16px @white;
+					color: @accent200;
+				}
+				&:hover {
+					color: @accent700;
 				}
 			}
 		}
-		#title {
-			overflow: hidden;
-			line-height: @list-item-height-desk;
-			font-weight: 700;
-			font-size: 1.2rem;
-			.default-left-padding;
-		}
-		#description {
-			.default-left-padding;
-			line-height: 28px;
+		#metadata {
+			background-color: @color500;
+			.default-text-shadow-invert;
+			#title {
+				overflow: hidden;
+				line-height: 4rem;
+				font-weight: 700;
+				font-size: 1.2rem;
+				border-bottom: 1px solid @color400;
+				.default-left-padding;
+			}
+			#description {
+				height: 0;
+				overflow: hidden;
+				&.expanded {
+					.default-left-padding;
+					padding-top: 1rem;
+					height: auto;
+					line-height: 28px;
+				}
+			}
+			#descriptionExpand {
+				display: inline;
+				// top: -30px;
+				// float: right;
+				// right: 3rem;
+
+				a {
+					display: inline-block;
+					position: relative;
+					border-radius: 50%;
+
+					color: @textColor;
+					background-color: @accent200;
+
+					text-align: center;
+					text-shadow: none;
+
+					width: @list-item-height-mobi;
+					height: @list-item-height-mobi;
+					line-height: @list-item-height-mobi;
+
+					i {
+						width: inherit;
+						display: inline-block;
+						text-align: center;
+						font-size: 2rem;
+						line-height: @list-item-height-mobi;
+					}
+
+					// border-bottom: 1px solid @color400;
+					&:hover {
+						background-color: @accent400;
+						cursor: pointer;
+					}
+				}
+			}
 		}
 	}
 	#tabs {
-		color: @black;
-		background: @mainAccentColor;
+		background: @color500;
 		display: flex;
 		justify-content: center;
-		.default-text-shadow;
 		.tab {
 			height: @list-item-height-desk;
 			// for border-box
@@ -125,8 +184,8 @@ iframe {
 			text-transform: uppercase;
 			box-sizing: border-box;
 			&:hover {
-				color: @white;
-				background: @mainAccentHoverColor
+				// color: @white;
+				background: @color700;
 			}
 			&.selectedTab {
 				color: @white;
@@ -172,7 +231,7 @@ iframe {
 }
 @media screen and (max-height:700px) {
 	#container {
-		top: 0
+		margin: 0 auto;
 	}
 }
 // mobile
@@ -200,21 +259,11 @@ iframe {
 }
 @media screen and (max-width:1280px) {
 	#container {
-		top: 0;
+		margin: 0 auto;
 		max-width: @player-width;
 		min-width: 200px;
 		#playerWrapper {
 			flex: 1 0 10%;
-			color: @white;
-			background-color: @mainAccentColor;
-			.default-text-shadow;
-			.button {
-				color: inherit;
-				background: inherit;
-				&:hover {
-					background: @mainAccentHoverColor
-				}
-			}
 		}
 		#listWrapper {
 			flex: auto;
