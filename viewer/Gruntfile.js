@@ -49,6 +49,16 @@ module.exports = function(grunt) {
 					'bin/css/style.css': 'lib/css/style.less'
 				}
 			}
+		},
+		compress: {
+			options: {
+				archive: 'build/build.zip',
+				mode: 'zip'
+			},
+			def: {
+				src: ['bin/**'],
+				dest: '/'
+			}
 		}
 	});
 
@@ -57,8 +67,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-compress');
 	grunt.loadNpmTasks('grunt-browserify');
 
 	// Default task(s).
 	grunt.registerTask('default', ['less', 'browserify', 'uglify', 'copy']);
+	// grunt.registerTask('compress', ['compress']);
 };
