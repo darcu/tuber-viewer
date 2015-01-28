@@ -10,6 +10,8 @@ var nextButton = document.getElementById('next');
 var prevButton = document.getElementById('prev');
 var repeatButton = document.getElementById('repeat');
 var songTitle = document.getElementById('title');
+var byline = document.getElementById('byline');
+var metadata = document.getElementById('metadata');
 var songDescription = document.getElementById('description');
 var descriptionExpand = document.getElementById('descriptionExpand');
 var addTab = document.getElementById('addtab');
@@ -72,12 +74,12 @@ uicontrol.toggleExpandDescription = function() {
 	descriptionExpanded = !descriptionExpanded;
 
 	if (descriptionExpanded) {
-		descriptionExpand.textContent = 'Show less ...';
+		descriptionExpand.innerHTML = '<a><i class="fa fa-angle-double-up"></i></a>';
 	} else {
-		descriptionExpand.textContent = 'Show more ...';
+		descriptionExpand.innerHTML = '<a><i class="fa fa-angle-double-down"></i></a>';
 	}
 
-	UTIL.addOrRemoveClass(songDescription, 'expanded', descriptionExpanded);
+	UTIL.addOrRemoveClass(metadata, 'expanded', descriptionExpanded);
 }
 
 function createListItemContent(args) {
@@ -218,8 +220,9 @@ draw = (function() {
 		playPauseButton.innerHTML = '<i class="fa fa-play">';
 	};
 
-	d.setSongInfo = function(title, by) {
-		songTitle.textContent = title + ' | ' + by;
+	d.setSongInfo = function(title, by, views) {
+		songTitle.textContent = title;
+		byline.innerHTML = '<span class="by">' + by + '</span><span class="viewsNum">' + UTIL.formatNumber(views) + '</span>' + ' views';
 	};
 
 	d.setTitle = function(title) {
@@ -237,7 +240,7 @@ draw = (function() {
 var currentSong = function() {
 	META.getCurrentVideoData().then(function(vidData) {
 		draw.setTitle(vidData.title);
-		draw.setSongInfo(vidData.title, vidData.channel);
+		draw.setSongInfo(vidData.title, vidData.channel, vidData.views);
 		draw.description(vidData.description)
 	}, UTIL.err);
 };

@@ -56,14 +56,14 @@ function getVideoMetadata(id) {
 		}
 
 		var req = ytapi.videos.list({
-			part: 'snippet,contentDetails', // to get the video metadata
+			part: 'snippet,contentDetails,statistics', // to get the video metadata
 			id: id
 		});
 
 		req.then(function(resp) {
 			if (resp) {
-				console.log('YT data');
-				console.log(resp.result.items[0].snippet.description);
+				// console.log('YT data');
+				// console.log(resp.result.items[0]);
 
 				var data = {};
 				data.id = id;
@@ -71,6 +71,7 @@ function getVideoMetadata(id) {
 				data.description = resp.result.items[0].snippet.description;
 				data.channel = resp.result.items[0].snippet.channelTitle;
 				data.duration = parseYTDuration(resp.result.items[0].contentDetails.duration);
+				data.views = resp.result.items[0].statistics.viewCount;
 
 				resolve(data);
 			} else {

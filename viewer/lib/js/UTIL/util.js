@@ -37,9 +37,28 @@ function err(err) {
 	console.error(err);
 }
 
+function formatNumber(num) {
+	num = '' + num;
+	var formattedNum = num;
+	for (var i = num.length - 3; i >= 0; i -= 3) {
+		formattedNum = stringInsert(formattedNum, i, ',');
+	}
+
+	return formattedNum;
+}
+
+function stringInsert(s, index, string) {
+	if (index > 0) {
+		return s.substring(0, index) + string + s.substring(index, s.length);
+	} else {
+		return string + s;
+	}
+};
+
 // external interfaces
-module.exports.err = err;
 module.exports.addClass = addClass;
 module.exports.removeClass = removeClass;
 module.exports.addOrRemoveClass = addOrRemoveClass;
 module.exports.hasValue = hasValue;
+module.exports.err = err;
+module.exports.formatNumber = formatNumber;
