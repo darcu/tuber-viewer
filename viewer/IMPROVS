@@ -4,20 +4,19 @@ IMPROVS
 /repeat button
 
 BETTER LIST
+CUSTOMIZE
+VIDID AFTER URL HMM
 thumbnails
 description
-views
+/views
 remove click to play (add button)
-center buttons (line height or smt is wrong)
 no default playlist
 big buttons over the screen (da!)
-smaller title and info on mobile
+collapse button on bottom of expanded description (only if big)
 
 BUGZ
-
+center buttons (line height or smt is wrong)
 one line list text
-text shadow in desktop
-no title/button update
 title too long > no button
 double click on search plays
 keep play state when next (prev) i.e. pause remains paused
