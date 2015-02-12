@@ -6,10 +6,11 @@
     "grunt-contrib-copy": "^0.7.0",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-less": "^1.0.0",
-    "grunt-contrib-uglify": "^0.7.0"
+    "grunt-contrib-uglify": "^0.7.0",
+    "grunt-shell": "^1.1.1"
   },
   "name": "tuber-viewer",
-  "version": "0.0.1",
+  "version": "0.2",
   "description": "The viewer for the music share project",
   "main": "Gruntfile.js",
   "scripts": {
@@ -21,5 +22,9 @@
     "google-client-api": "^1.0.4",
     "googleapis": "^1.1.0",
     "youtube-iframe-player": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:darcu/tuber-viewer.git"
   }
 }

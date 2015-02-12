@@ -52,12 +52,32 @@ module.exports = function(grunt) {
 		},
 		compress: {
 			options: {
-				archive: 'build/build.zip',
-				mode: 'zip'
+				archive: function() {
+					// var version =
+					// return 'build/build.' + Date.now() + '.tar.gz';
+					return 'build/build.tar.gz';
+				},
+				mode: 'tgz'
 			},
 			def: {
-				src: ['bin/**'],
+				expand: true,
+				cwd: 'bin/',
+				src: ['**/*'],
 				dest: '/'
+			}
+		},
+		shell: {
+			options: {
+				stderr: false
+			},
+			scp: {
+				command: 'scp build/* drc@128.199.61.92:/home/drc/tuberViewer'
+			},
+			version: {
+				command: 'cat package.json | grep version| sed -s "s/[^0-9\.]//g"'
+			},
+			del: {
+				command: 'rm -rf build/*'
 			}
 		}
 	});
@@ -69,8 +89,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-compress');
 	grunt.loadNpmTasks('grunt-browserify');
+	grunt.loadNpmTasks('grunt-shell');
 
 	// Default task(s).
 	grunt.registerTask('default', ['less', 'browserify', 'uglify', 'copy']);
-	// grunt.registerTask('compress', ['compress']);
+	grunt.registerTask('deploy', ['default', 'shell:del', 'compress', 'shell:scp']);
 };
