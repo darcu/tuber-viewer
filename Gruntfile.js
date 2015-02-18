@@ -76,7 +76,10 @@ module.exports = function(grunt) {
 			version: {
 				command: 'cat package.json | grep version| sed -s "s/[^0-9\.]//g"'
 			},
-			del: {
+			delBuild: {
+				command: 'rm -rf build/*'
+			},
+			delBin: {
 				command: 'rm -rf build/*'
 			}
 		}
@@ -92,6 +95,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-shell');
 
 	// Default task(s).
-	grunt.registerTask('default', ['less', 'browserify', 'uglify', 'copy']);
-	grunt.registerTask('deploy', ['default', 'shell:del', 'compress', 'shell:scp']);
+	grunt.registerTask('default', ['shell:delBin', 'less', 'browserify', 'uglify', 'copy']);
+	grunt.registerTask('deploy', ['default', 'shell:delBuild', 'compress', 'shell:scp']);
 };
