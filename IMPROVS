@@ -1,27 +1,27 @@
 IMPROVS
-
-/smaller scale on desktop
-/repeat button
-
-BETTER LIST
-CUSTOMIZE
-VIDID AFTER URL HMM
-thumbnails
-description
-/views
-remove click to play (add button)
-center buttons (line height or smt is wrong)
-no default playlist
-big buttons over the screen (da!)
-collapse button on bottom of expanded description (only if big)
-smaller title and info on mobile
-
+	ui
+		- ORDER!
+		- THUMBS!
+		- other colors !maybe
+		- fullscreen
 BUGZ
-center buttons (line height or smt is wrong)
-play/paus not updated
-one line list text
-text shadow in desktop
-no title/button update
-title too long > no button
-double click on search plays
-keep play state when next (prev) i.e. pause remains paused
+	ui
+		- next on finish
+		- list colors
+		- list/title one line
+	control
+		- double click on search plays
+		- keep play state when next (prev) i.e. pause remains paused
+		- sometimes fist video not loaded in player (maybe slow api response)
+		- added songs still have add button
+	mobile
+		ui
+			- touch sensitivity
+
+NICES
+	ui
+		- collapse button on bottom of expanded description (only if big)
+		- big buttons over the screen (da!)
+		- CUSTOMIZE
+		- HD
+
