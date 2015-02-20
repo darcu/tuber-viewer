@@ -9,9 +9,9 @@ IMPROVS
 
 BUGZ
 	ui
-		- next on finish
-		- list colors
 		- list/title one line
+		/list colors
+		/next on finish
 	control
 		- double click on search plays
 		- keep play state when next (prev) i.e. pause remains paused
