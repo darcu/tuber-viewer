@@ -4,6 +4,8 @@ IMPROVS
 		- THUMBS!
 		- other colors !maybe
 		- fullscreen
+	build
+		- move to bower
 BUGZ
 	ui
 		- next on finish

@@ -1,0 +1,8 @@
+{
+  "name": "tuber-viewer",
+  "description": "The viewer for the music share project",
+  "version": "0.0.2",
+  "dependencies": {
+    "iframe_api": "https://www.youtube.com/iframe_api"
+  }
+}

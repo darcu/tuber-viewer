@@ -1,5 +1,7 @@
 {
-  "devDependencies": {
+  "dependencies": {
+    "debowerify": "^1.2.0",
+    "google-client-api": "^1.0.4",
     "grunt": "^0.4.5",
     "grunt-browserify": "^3.3.0",
     "grunt-contrib-compress": "^0.13.0",
@@ -9,20 +11,20 @@
     "grunt-contrib-uglify": "^0.7.0",
     "grunt-shell": "^1.1.1"
   },
+  "browserify": {
+    "transform": [
+      "debowerify"
+    ]
+  },
   "name": "tuber-viewer",
-  "version": "0.2",
-  "description": "The viewer for the music share project",
+  "version": "0.0.2",
+  "description": "The viewer for the Tuber project",
   "main": "Gruntfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lucian Parfeni - darcu.ro@gmail.com ",
   "license": "ISC",
-  "dependencies": {
-    "google-client-api": "^1.0.4",
-    "googleapis": "^1.1.0",
-    "youtube-iframe-player": "^0.1.0"
-  },
   "repository": {
     "type": "git",
     "url": "git@github.com:darcu/tuber-viewer.git"
