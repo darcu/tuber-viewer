@@ -6,6 +6,7 @@ IMPROVS
 		- fullscreen
 	build
 		- move to bower
+
 BUGZ
 	ui
 		- next on finish
@@ -26,4 +27,3 @@ NICES
 		- big buttons over the screen (da!)
 		- CUSTOMIZE
 		- HD
-
