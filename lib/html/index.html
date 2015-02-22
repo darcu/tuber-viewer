@@ -12,6 +12,18 @@
 	</head>
 	<body>
 		<!-- <header></header> -->
+		<span id="signinButton">
+		  <span
+		    class="g-signin"
+		    data-callback="signinCallback"
+		    data-clientid="167294324522-9dv1gpeiq7pm5nnjh8f4kd30hvob2b2m.apps.googleusercontent.com"
+		    data-cookiepolicy="single_host_origin"
+		    data-requestvisibleactions="http://schema.org/AddAction"
+		    data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/youtube">
+		  </span>
+		</span>
+		<span id="signOut">Sign Out</span>
+
 		<div id="container">
 			<div id="playerWrapper">
 				<div id ="controls">
@@ -44,6 +56,9 @@
 				</div>
 			</div>
 		</div>
+
+		<script src="https://apis.google.com/js/client:platform.js" async defer></script>
+
 	</body>
 	<script src="main.min.js"></script>
 </html>
