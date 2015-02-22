@@ -118,8 +118,10 @@ iframe {
 	color: @textColor;
 	background: transparent;
 	width: @list-item-height-desk;
-	min-height: @list-item-height-desk;
+	height: @list-item-height-desk;
+	line-height: @list-item-height-desk;
 	font-size: 2rem;
+	cursor: pointer;
 	.no-padd-or-margin;
 	&:hover {
 		color: @textColorInvert;
@@ -165,6 +167,7 @@ iframe {
 				.color-height-transition;
 				// transition-delay: .28s;
 
+				overflow: hidden;
 				background-color: @color500;
 				height: 5rem;
 				line-height: 5rem;
@@ -287,6 +290,7 @@ iframe {
 				text-align: center;
 				text-transform: uppercase;
 				box-sizing: border-box;
+				cursor: pointer;
 				&:hover {
 					background: @color700;
 				}
@@ -308,10 +312,20 @@ iframe {
 			.no-padd-or-margin;
 		}
 		.listItem {
-			.left-padding-2;
+			display: flex;
 			overflow: hidden;
 			cursor: pointer;
-			// .no-padd-or-margin;
+			line-height: @list-item-height-desk;
+			height: @list-item-height-desk;
+			.no-padd-or-margin;
+			.listButton {
+				float: right;
+				display: none;
+			}
+			.listinfocontainer {
+				.left-padding-2;
+				flex-grow: 1;
+			}
 			&.playing {
 				color: @color500;
 			}
@@ -321,16 +335,8 @@ iframe {
 			&:hover {
 				background-color: @selectedColor;
 				.listButton {
-					display: inline
+					display: initial;
 				}
-			}
-			.listButton {
-				float: right;
-				display: none
-			}
-			.listinfocontainer {
-				overflow: hidden;
-				height: @list-item-height-desk
 			}
 		}
 	}

@@ -1,15 +1,17 @@
 IMPROVS
+	USERS
 	ui
 		- ORDER!
 		- THUMBS!
 		- other colors !maybe
 		- fullscreen
+		- search always on
 	build
 		- move to bower
 
 BUGZ
 	ui
-		- list/title one line
+		/list/title one line
 		/list colors
 		/next on finish
 	control
