@@ -11,47 +11,53 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	</head>
 	<body>
-		<!-- <header></header> -->
-		<span id="signinButton">
-		  <span
-		    class="g-signin"
-		    data-callback="signinCallback"
-		    data-clientid="167294324522-9dv1gpeiq7pm5nnjh8f4kd30hvob2b2m.apps.googleusercontent.com"
-		    data-cookiepolicy="single_host_origin"
-		    data-requestvisibleactions="http://schema.org/AddAction"
-		    data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/youtube">
-		  </span>
-		</span>
-		<button id="signOut">Sign Out</button>
 
-		<div id="container">
-			<div id="playerWrapper">
-				<div id ="controls">
-					<button id="prev" title = "Previous video" class="controls button"><i class="fa fa-backward"></i></button>
-					<button id="playpause" title = "Play video" class="controls button"><i class="fa fa-play"></i></button>
-					<button id="next" title = "Next video" class="controls button"><i class="fa fa-forward"></i></button>
-					<button id="repeat" title = "Repeat song" class="controls button"><i class="fa fa-repeat"></i></button>
-				</div>
-				<div id="player"></div>
-				<div id="metadata">
-					<div id="title"></div>
-					<div id="descriptionExpand"><a><i class="fa fa-angle-double-down"></i></a></div>
-					<div id="byanddescription">
-						<div id="byline"></div>
-						<div id="description"></div>
+		<div id="landing">
+			<!-- <header></header> -->
+<!-- 			<span id="signinButton">
+			  <span
+				class="g-signin"
+				data-callback="signinCallback"
+				data-clientid="167294324522-9dv1gpeiq7pm5nnjh8f4kd30hvob2b2m.apps.googleusercontent.com"
+				data-cookiepolicy="single_host_origin"
+				data-requestvisibleactions="http://schema.org/AddAction"
+				data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/youtube">
+			  </span>
+			</span> -->
+			<button id="sign">Sign in with Google</button>
+			<button id="continue">Continue without sign in</button>
+		</div>
+
+		<div id="app" class="hidden">
+			<div id="container">
+				<div id="playerWrapper">
+					<div id ="controls">
+						<button id="prev" title = "Previous video" class="controls button"><i class="fa fa-backward"></i></button>
+						<button id="playpause" title = "Play video" class="controls button"><i class="fa fa-play"></i></button>
+						<button id="next" title = "Next video" class="controls button"><i class="fa fa-forward"></i></button>
+						<button id="repeat" title = "Repeat song" class="controls button"><i class="fa fa-repeat"></i></button>
+					</div>
+					<div id="player"></div>
+					<div id="metadata">
+						<div id="title"></div>
+						<div id="descriptionExpand"><a><i class="fa fa-angle-double-down"></i></a></div>
+						<div id="byanddescription">
+							<div id="byline"></div>
+							<div id="description"></div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div id="listWrapper">
-				<div id="tabs">
-					<div id="listtab" title="Current playlist" class="tab selectedTab">List</div>
-					<div id="addtab" title="Search or add videos to the playlist" class="tab">Add</div>
-				</div>
-				<div id="listContainer">
-					<ul id="list" class="list"></ul>
-					<div id="addWrapper" class="hidden">
-						<input id="addSearch" type="search" placeholder="Search for a video, paste an URL or a video code ...">
-						<ul id="searchList" class="list"></ul>
+				<div id="listWrapper">
+					<div id="tabs">
+						<div id="listtab" title="Current playlist" class="tab selectedTab">List</div>
+						<div id="addtab" title="Search or add videos to the playlist" class="tab">Add</div>
+					</div>
+					<div id="listContainer">
+						<ul id="list" class="list"></ul>
+						<div id="addWrapper" class="hidden">
+							<input id="addSearch" type="search" placeholder="Search for a video, paste an URL or a video code ...">
+							<ul id="searchList" class="list"></ul>
+						</div>
 					</div>
 				</div>
 			</div>
