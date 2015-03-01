@@ -11,21 +11,31 @@
 @textShadowColorInvert: @textblack26;
 @boxShadowColor: @textblack26;
 
-@color100: @teal100;
-@color300: @teal300;
-@color400: @teal400;
-@color500: @teal500;
-@color700: @teal700;
+@color50: @blueGrey50;
+@color100: @blueGrey100;
+@color200: @blueGrey200;
+@color300: @blueGrey300;
+@color400: @blueGrey400;
+@color500: @blueGrey500;
+@color700: @blueGrey700;
+@color800: @blueGrey800;
+@color900: @blueGrey900;
 
-@accent200: @limeA200;
-@accent400: @limeA400;
-@accent700: @limeA400;
+@accent100: @orangeA200;
+@accent200: @orangeA200;
+@accent400: @orangeA400;
+@accent700: @orangeA400;
 
-@mainAccentColor: @accent400;
-@selectedColor: @color100;
+@mainColor: @blueGrey800;
+@mainDarkColor: @blueGrey900;
+@mainLightColor: @blueGrey700;
+@mainWhite: @blueGrey50;
+
+@mainAccentColor: @accent200;
+@selectedColor: @accent100;
 
 @fg-gray: @grey50;
-@bg-gray: @grey200;
+@bg-gray: @grey900;
 
 @main-black: @grey900;
 
@@ -145,12 +155,12 @@ iframe {
 
 	#playerWrapper {
 		color: @textColorInvert;
-		background-color: @color500;
+		background-color: @mainColor;
 		margin-right: 1rem;
 		.box-box-shadow;
 
 		#controls {
-			background-color: @color500;
+			background-color: @mainColor;
 			display: flex;
 			.button {
 				color: inherit;
@@ -159,10 +169,10 @@ iframe {
 				line-height: 3rem;
 				flex-grow: 1;
 				&.light {
-					color: @accent200;
+					color: @mainAccentColor;
 				}
 				&:hover {
-					background: @color700;
+					background: @mainDarkColor;
 				}
 			}
 		}
@@ -173,11 +183,11 @@ iframe {
 				// transition-delay: .28s;
 
 				overflow: hidden;
-				background-color: @color500;
+				background-color: @mainColor;
 				height: 5rem;
 				line-height: 5rem;
 				font-size: 2rem;
-				border-bottom: 1px solid @color400;
+				// border-bottom: 1px solid @mainLightColor;
 				.left-padding-2;
 			}
 			#descriptionExpand {
@@ -193,7 +203,7 @@ iframe {
 					border-radius: 50%;
 
 					color: @textColor;
-					background-color: @accent200;
+					background-color: @mainAccentColor;
 
 					text-align: center;
 					text-shadow: none;
@@ -224,6 +234,8 @@ iframe {
 				#byline {
 					.color-height-transition;
 					.left-padding-3;
+					cursor: pointer;
+					background-color: @mainLightColor;
 					height: 4rem;
 					line-height: 4rem;
 					font-size: 1rem;
@@ -237,7 +249,7 @@ iframe {
 				}
 				#description {
 					.color-height-transition;
-					color: @color500;
+					color: @mainColor;
 					height: 0;
 					line-height: 0;
 					font-size: 0;
@@ -246,10 +258,10 @@ iframe {
 			}
 
 			&.expanded {
-				background-color: @white;
+				background-color: @mainWhite;
 				#title {
 					border-bottom: none;
-					background-color: @color500;
+					background-color: @mainColor;
 					// .box-box-shadow;
 					// margin-bottom: 1rem; // for the box shadow (4px + 8px)
 				}
@@ -259,14 +271,13 @@ iframe {
 				#byanddescription {
 					#byline {
 						color: @textColor;
-						background: @white;
+						background: @mainWhite;
 						line-height: 6rem;
 						height: 6rem;
 					}
 					#description {
 						color: @textColor;
 						font-size: 1rem;
-						// background: @white;
 						height: auto;
 						.left-padding-3;
 						padding-bottom: 3rem;
@@ -275,18 +286,15 @@ iframe {
 				}
 			}
 		}
-
-
 	}
 
 	#listWrapper {
 		.box-box-shadow;
-		background: @white;
-
 		#tabs {
 			height: 4rem;
 			line-height: 4rem;
-			background: @color500;
+			color: @white;
+			background: @mainColor;
 			display: flex;
 			justify-content: center;
 			.tab {
@@ -297,15 +305,12 @@ iframe {
 				box-sizing: border-box;
 				cursor: pointer;
 				&:hover {
-					background: @color700;
+					background: @mainDarkColor;
 				}
 				&.selectedTab {
-					color: @white;
 					border-bottom: 8px solid rgba(0, 0, 0, 0.3);
 				}
 			}
-		}
-		#listContainer {
 		}
 		#addSearch {
 			width: 100%;
@@ -322,6 +327,7 @@ iframe {
 			cursor: pointer;
 			line-height: @list-item-height-desk;
 			height: @list-item-height-desk;
+			background-color: @mainWhite;
 			.no-padd-or-margin;
 			.listButton {
 				float: right;
@@ -332,7 +338,7 @@ iframe {
 				flex-grow: 1;
 			}
 			&.playing {
-				color: @color500;
+				color: @mainColor;
 			}
 			&.selected {
 				background-color: @selectedColor;

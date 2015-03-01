@@ -1,7 +1,5 @@
 IMPROVS
 	users
-		/USERS
-		/USERS on the server
 		auth
 		server side auth - asa oricine poate sa foloseasca un id
 		- cleanup login/api load flow
@@ -9,20 +7,17 @@ IMPROVS
 		- ORDER!
 		- THUMBS!
 		- other colors !maybe
-		- fullscreen
+		/- fullscreen
 		- search always on
+		- date
 	build
 		- move to bower
 
 BUGZ
-	ui
-		/list/title one line
-		/list colors
-		/next on finish
 	control
 		- double click on search plays
 		- keep play state when next (prev) i.e. pause remains paused
-		- sometimes fist video not loaded in player (maybe slow api response)
+		/- sometimes fist video not loaded in player (maybe slow api response)
 		- added songs still have add button
 	mobile
 		ui
