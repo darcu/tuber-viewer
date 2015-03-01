@@ -1,5 +1,10 @@
 IMPROVS
-	USERS
+	users
+		/USERS
+		/USERS on the server
+		auth
+		server side auth - asa oricine poate sa foloseasca un id
+		- cleanup login/api load flow
 	ui
 		- ORDER!
 		- THUMBS!
