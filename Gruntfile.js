@@ -33,9 +33,14 @@ module.exports = function(grunt) {
 				}, {
 					expand: true,
 					cwd: 'lib/img',
-					src: ['**'],
+					src: ['**/*'],
 					dest: 'bin/img',
 					filter: 'isFile'
+				}, {
+					expand: true,
+					cwd: 'lib/third/',
+					src: ['**/*'],
+					dest: 'bin/'
 				}]
 			}
 		},
