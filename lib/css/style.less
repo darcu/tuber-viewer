@@ -8,28 +8,29 @@
 
 @textColor: @textblack87;
 @textColorInvert: @textwhite100;
+@textColorInvertDim: @textwhite70;
 @textShadowColorInvert: @textblack26;
 @boxShadowColor: @textblack26;
 
-@color50: @blueGrey50;
-@color100: @blueGrey100;
-@color200: @blueGrey200;
-@color300: @blueGrey300;
-@color400: @blueGrey400;
-@color500: @blueGrey500;
-@color700: @blueGrey700;
-@color800: @blueGrey800;
-@color900: @blueGrey900;
+@color50: @green50;
+@color100: @green100;
+@color200: @green200;
+@color300: @green300;
+@color400: @green400;
+@color500: @green500;
+@color700: @green700;
+@color800: @green800;
+@color900: @green900;
 
-@accent100: @orangeA200;
-@accent200: @orangeA200;
-@accent400: @orangeA400;
-@accent700: @orangeA400;
+@accent100: @greenA100;
+@accent200: @greenA200;
+@accent400: @greenA400;
+@accent700: @greenA400;
 
-@mainColor: @blueGrey800;
-@mainDarkColor: @blueGrey900;
-@mainLightColor: @blueGrey700;
-@mainWhite: @blueGrey50;
+@mainColor: @color500;
+@mainDarkColor: @color700;
+@mainLightColor: @color300;
+@mainWhite: @color50;
 
 @mainAccentColor: @accent200;
 @selectedColor: @accent100;
@@ -68,6 +69,10 @@
 
 .float-button-box-shadow-hover {
 	box-shadow: 0 2px 5px 0 @textblack26, 0 8px 17px rgba(0,0,0,.2);
+}
+
+.no-box-shadow {
+	box-shadow: none;
 }
 
 .box-box-shadow {
@@ -123,15 +128,18 @@ iframe {
 	display: none
 }
 
-.button {
+button {
 	.no-border-or-outline;
 	color: @textColor;
 	background: transparent;
-	width: @list-item-height-desk;
-	height: @list-item-height-desk;
-	line-height: @list-item-height-desk;
-	font-size: 2rem;
 	cursor: pointer;
+	height: @list-item-height-desk;
+}
+
+.button {
+	font-size: 2rem;
+	width: @list-item-height-desk;
+	line-height: @list-item-height-desk;
 	.no-padd-or-margin;
 	&:hover {
 		color: @textColorInvert;
@@ -140,6 +148,45 @@ iframe {
 	&:active {
 		color: @accent700;
 		background-color: transparent;
+	}
+}
+
+header {
+	.box-box-shadow;
+	width: 100%;
+	color: @textColor;
+	background-color: @mainColor;
+	padding: 0.25rem;
+	margin-bottom: @list-item-height-desk;
+	display: flex;
+	justify-content: flex-end;
+	flex-wrap: nowrap;
+	flex-direction: row;
+	line-height: 3rem;
+
+	#tuber {
+		.left-padding-2;
+		color: @textColorInvert;
+		text-transform: uppercase;
+		font-size: 3rem;
+		flex-grow: 99;
+		font-style: italic;
+
+		font-family: 'Changa One', cursive;
+	}
+
+	button {
+		color: @textColorInvertDim;
+		flex-grow: 1;
+		// .box-box-shadow;
+		height: 2rem;
+		margin-right: 1rem;
+		// background-color: @mainAccentColor;
+
+		&:hover {
+			color: @textColorInvert;
+			// background-color: @accent100;
+		}
 	}
 }
 
@@ -354,6 +401,10 @@ iframe {
 }
 
 @media screen and (max-height:700px) {
+	header {
+		margin-bottom: 1rem;
+	}
+
 	#container {
 		margin: 0 auto;
 	}
@@ -384,11 +435,14 @@ iframe {
 }
 
 @media screen and (max-width:1280px) {
+	html {
+		min-width: 400px;
+	}
+
 	#container {
 		flex-direction: column;
 		margin: 0 auto;
 		max-width: @player-width;
-		min-width: 200px;
 		#playerWrapper {
 			flex: 1 0 10%;
 			margin-bottom: 2rem;
