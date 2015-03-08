@@ -5,29 +5,19 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<title>Tuber</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		<link href="//fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+		<link href="//fonts.googleapis.com/css?family=Changa+One|Roboto:400,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<meta name="HandheldFriendly" content="True" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	</head>
 	<body>
-
-		<div id="landing">
-			<!-- <header></header> -->
-<!-- 			<span id="signinButton">
-			  <span
-				class="g-signin"
-				data-callback="signinCallback"
-				data-clientid="167294324522-9dv1gpeiq7pm5nnjh8f4kd30hvob2b2m.apps.googleusercontent.com"
-				data-cookiepolicy="single_host_origin"
-				data-requestvisibleactions="http://schema.org/AddAction"
-				data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/youtube">
-			  </span>
-			</span> -->
-			<button id="sign">Sign in with Google</button>
-			<button id="continue">Continue without sign in</button>
-		</div>
-
+		<header>
+			<span id="tuber">Tuber</span>
+			<div id="landing">
+				<button id="sign">Sign in with Google</button>
+				<button id="continue">Continue without sign in</button>
+			</div>
+		</header>
 		<div id="app" class="hidden">
 			<div id="container">
 				<div id="playerWrapper">
@@ -63,7 +53,7 @@
 			</div>
 		</div>
 
-		<script src="https://apis.google.com/js/client:platform.js" async defer></script>
+		<!-- <script src="https://apis.google.com/js/client:platform.js" async defer></script> -->
 
 	</body>
 	<script src="main.min.js"></script>
