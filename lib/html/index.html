@@ -12,9 +12,15 @@
 	</head>
 	<body>
 		<header>
-			<span id="tuber">Tuber</span>
+			<div id="tuber">Tuber</div>
+			<div id ="controls">
+				<button id="prev" title = "Previous video" class="controls"><i class="fa fa-backward"></i></button>
+				<button id="playpause" title = "Play video" class="controls"><i class="fa fa-play"></i></button>
+				<button id="next" title = "Next video" class="controls"><i class="fa fa-forward"></i></button>
+				<button id="repeat" title = "Repeat song" class="controls"><i class="fa fa-repeat"></i></button>
+			</div>
 			<div id="landing">
-				<button id="sign"><i class="fa fa-spinner fa-spin"></i> Checking login ...</button>
+				<button id="sign"><i class="fa fa-spinner fa-spin"></i></i></button>
 			</div>
 		</header>
 		<div id="app" class="hidden">
@@ -23,17 +29,11 @@
 					<div id="player"></div>
 					<div id="metadata">
 						<div id="lineOne">
-							<div id ="controls">
-								<button id="prev" title = "Previous video" class="controls button"><i class="fa fa-backward"></i></button>
-								<!-- <button id="playpause" title = "Play video" class="controls button"><i class="fa fa-play"></i></button> -->
-								<button id="next" title = "Next video" class="controls button"><i class="fa fa-forward"></i></button>
-								<button id="repeat" title = "Repeat song" class="controls button"><i class="fa fa-repeat"></i></button>
-							</div>
 							<div id="title"></div>
+							<div id="byline"></div>
 						</div>
 						<!-- <div id="descriptionExpand"><a><i class="fa fa-angle-double-down"></i></a></div> -->
 						<div id="byanddescription">
-							<div id="byline"></div>
 							<div id="description"></div>
 						</div>
 					</div>
