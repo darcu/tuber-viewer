@@ -207,7 +207,7 @@ header {
 	}
 
 	button {
-		color: @textColorInvertDim;
+		color: @textColorInvert;
 		flex-grow: 1;
 		// .box-box-shadow;
 		width: 3rem;
@@ -218,7 +218,8 @@ header {
 		// background-color: @mainAccentColor;
 
 		&:hover {
-			color: @textColorInvert;
+			// color: @textColorInvertDim;
+			text-shadow: 4px 4px rgba(0,0,0,0.15);
 			// background-color: @accent100;
 		}
 	}
