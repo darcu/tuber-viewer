@@ -53,8 +53,6 @@ module.exports = function(grunt) {
 		compress: {
 			options: {
 				archive: function() {
-					// var version =
-					// return 'build/build.' + Date.now() + '.tar.gz';
 					return 'build/build.tar.gz';
 				},
 				mode: 'tgz'
@@ -63,7 +61,7 @@ module.exports = function(grunt) {
 				expand: true,
 				cwd: 'bin/',
 				src: ['**/*'],
-				dest: '/'
+				dest: '/tuberViewer'
 			}
 		},
 		shell: {
@@ -71,7 +69,7 @@ module.exports = function(grunt) {
 				stderr: false
 			},
 			scp: {
-				command: 'scp build/* drc@128.199.61.92:/home/drc/tuberViewer'
+				command: 'scp build/* drc@128.199.61.92:/home/drc/'
 			},
 			version: {
 				command: 'cat package.json | grep version| sed -s "s/[^0-9\.]//g"'
