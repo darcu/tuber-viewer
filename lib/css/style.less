@@ -55,6 +55,10 @@
 	outline: none;
 }
 
+.left-padding-1 {
+	padding-left: 1rem;
+}
+
 .left-padding-2 {
 	padding-left: 2rem;
 }
@@ -206,122 +210,119 @@ header {
 		margin-right: 1rem;
 		.box-box-shadow;
 
-		#controls {
-			background-color: @mainColor;
-			display: flex;
-			.button {
-				color: inherit;
-				background-color: inherit;
-				height: 4rem;
-				line-height: 3rem;
-				flex-grow: 1;
-				&.light {
-					color: @mainAccentColor;
-				}
-				&:hover {
-					background: @mainDarkColor;
-				}
-			}
-		}
-
 		#metadata {
-			#title {
-				.color-height-transition;
-				// transition-delay: .28s;
-
-				overflow: hidden;
-				background-color: @mainColor;
-				height: 5rem;
-				line-height: 5rem;
+			#lineOne {
+				display: flex;
 				font-size: 2rem;
-				// border-bottom: 1px solid @mainLightColor;
-				.left-padding-2;
-			}
-			#descriptionExpand {
-				display: inline;
-				position: relative;
-				top: -2rem;
-				float: right;
-				right: 7rem;
 
-				a {
-					display: inline-block;
-					position: absolute;
-					border-radius: 50%;
-
-					color: @textColor;
-					background-color: @mainAccentColor;
-
-					text-align: center;
-					text-shadow: none;
-
-					.float-button-box-shadow;
-					.color-transition;
-
-					width: 4rem;
-					height: 4rem;
-					line-height: 4rem;
-
-					i {
-						width: inherit;
-						display: inline-block;
-						text-align: center;
-						font-size: 2rem;
+				#controls {
+					background-color: @mainColor;
+					display: flex;
+					.button {
+						color: inherit;
+						background-color: inherit;
+						width: 4rem;
+						height: 4rem;
 						line-height: 4rem;
-					}
-
-					&:hover {
-						color: @textblack100;
-						cursor: pointer;
-						.float-button-box-shadow-hover;
+						flex-grow: 1;
+						&.light {
+							color: @mainAccentColor;
+						}
+						&:hover {
+							background: @mainDarkColor;
+						}
 					}
 				}
-			}
-			#byanddescription {
-				#byline {
-					.color-height-transition;
-					.left-padding-3;
-					cursor: pointer;
-					background-color: @mainLightColor;
+
+				#title {
+					// .color-height-transition;
+					.no-padd-or-margin;
+					.left-padding-1;
 					height: 4rem;
 					line-height: 4rem;
-					font-size: 1rem;
-					.by {
-						font-size: 1.3rem;
-						padding-right: 1rem;
-					}
-					.viewsNum {
-						font-size: 1.6rem;
-					}
+					overflow: hidden;
+					background-color: @mainColor;
+					flex-grow: 99;
+					cursor: pointer;
+				}
+			}
+
+			// #descriptionExpand {
+			// 	display: inline;
+			// 	position: relative;
+			// 	top: -2rem;
+			// 	float: right;
+			// 	right: 7rem;
+
+			// 	a {
+			// 		display: inline-block;
+			// 		position: absolute;
+			// 		border-radius: 50%;
+
+			// 		color: @textColor;
+			// 		background-color: @mainAccentColor;
+
+			// 		text-align: center;
+			// 		text-shadow: none;
+
+			// 		.float-button-box-shadow;
+			// 		.color-transition;
+
+			// 		width: 4rem;
+			// 		height: 4rem;
+			// 		line-height: 4rem;
+
+			// 		i {
+			// 			width: inherit;
+			// 			display: inline-block;
+			// 			text-align: center;
+			// 			font-size: 2rem;
+			// 			line-height: 4rem;
+			// 		}
+
+			// 		&:hover {
+			// 			color: @textblack100;
+			// 			cursor: pointer;
+			// 			.float-button-box-shadow-hover;
+			// 		}
+			// 	}
+			// }
+			#byanddescription {
+				// .color-height-transition;
+				height: 0;
+				line-height: 0;
+				font-size: 0;
+				overflow: hidden;
+
+				#byline {
+					.left-padding-3;
+					height: 0rem;
+					line-height: 0rem;
 				}
 				#description {
-					.color-height-transition;
 					color: @mainColor;
-					height: 0;
-					line-height: 0;
-					font-size: 0;
-					overflow: hidden;
 				}
-			}
 
-			&.expanded {
-				background-color: @mainWhite;
-				#title {
-					border-bottom: none;
-					background-color: @mainColor;
-					// .box-box-shadow;
-					// margin-bottom: 1rem; // for the box shadow (4px + 8px)
-				}
-				#descriptionExpand {
-					// top: -3rem; // +1 rem from box-shadow
-				}
-				#byanddescription {
+				&.expanded {
+					font-size: 1rem;
+					background-color: @mainWhite;
+					height: auto;
+					line-height: 2rem;
+
 					#byline {
 						color: @textColor;
 						background: @mainWhite;
 						line-height: 6rem;
 						height: 6rem;
+						.by {
+							font-size: 1.3rem;
+							padding-right: 1rem;
+						}
+						.viewsNum {
+							font-size: 1.6rem;
+						}
 					}
+
 					#description {
 						color: @textColor;
 						font-size: 1rem;
@@ -413,24 +414,24 @@ header {
 // mobile
 @media screen and (max-device-width:799px) {
 	body {
-		line-height: @list-item-height-mobi
+		line-height: @list-item-height-mobi;
 	}
 	#addSearch {
-		height: @list-item-height-mobi
+		height: @list-item-height-mobi;
 	}
 	.listButton {
 		width: @list-item-height-mobi;
 		min-height: @list-item-height-mobi
 	}
 	.tab {
-		height: @list-item-height-mobi
+		height: @list-item-height-mobi;
 	}
 	.button:hover {
 		color: inherit;
-		background: inherit
+		background: inherit;
 	}
 	.listinfocontainer {
-		height: @list-item-height-desk
+		height: @list-item-height-desk;
 	}
 }
 
@@ -455,7 +456,7 @@ header {
 	}
 }
 
-@media screen and (min-width:1280px) {
+@media screen and (min-width:1281px) {
 	#container {
 		flex-direction: row;
 		max-width: 1600px;
