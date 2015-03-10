@@ -1,28 +1,29 @@
 0. load YT iframe API
-1. load google client api (gcapi) > 2
-2. trigger GAPILOADED > 3
-3. check auth (sign.js) > 4
-4.
-	is auth >
-		- hide interstitial page
+1. load google client api (gcapi) (script.js > CTRL > gcapi.js)) > 2
+2. check auth (gcapi.js) > 3
+3.
+	load youtube API > 4
+	trigger AUTHDONE > UI.js > 6
+	if auth >
 		- set USER.authenticated
-		- trigger AUTHDONE > 5
-		- trigger userSignIN
-	is not auth >
-		- wait for input >
-			- click login > 4A
-			- click continue >
-				- trigger AUTH DONE > 5
+		- load G+ API > 5
+4.
+	- if auth >
+		- trigger LOAD_UI > 7
 5.
-	- load YT client API > 6
-	- is USER.authenticad >
-		- load G+ API
-6. loaded YT api >
-	- trigger YTAPILOADED > 7
+	- if auth >
+		- trigger LOAD_UI > 7
+6.
+	- if auth >
+		- replace sign in button with sign out
+		- remove continue without signing in
+	- if not auth >
+		- add signIn handler to sign in button
+		- add LOAD_UI trigger to continue button > 7
 7. call API list/get >
-	- create YT player with first video ID
-	- add all videos to metadata
-	- draw list
+	- add list data to local metadata
+	- trigger LOAD_UI > 8
 
-
-
+8.
+	- show app (remove hidden class)
+	- draw.list()
