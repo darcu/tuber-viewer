@@ -1,3 +1,7 @@
+title and progress up top :D
+
+
+
 IMPROVS
 	users
 		auth
@@ -17,7 +21,7 @@ BUGZ
 	control
 		- double click on search plays
 		- keep play state when next (prev) i.e. pause remains paused
-		/- sometimes fist video not loaded in player (maybe slow api response)
+		/- sometimes fist video not loaded in player (maybe slow api ersponse)
 		- added songs still have add button
 	mobile
 		ui
@@ -29,3 +33,4 @@ NICES
 		/- big buttons over the screen (da!) - pula / no fullscreen / no ads / pula
 		- CUSTOMIZE
 		- HD
+		- compensate for scroll bar (waaat!)
