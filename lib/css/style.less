@@ -133,7 +133,7 @@ iframe {
 }
 
 .hidden {
-	display: none
+	display: none !important;
 }
 
 button {
@@ -164,13 +164,15 @@ header {
 	width: 100%;
 	color: @textColor;
 	background-color: @mainColor;
-	// padding: 0.25rem;
-	margin-bottom: @list-item-height-desk;
 	display: flex;
 	justify-content: flex-end;
 	flex-wrap: nowrap;
 	flex-direction: row;
 	line-height: 2rem;
+
+	position: fixed;
+	top: 0;
+	z-index: 2;
 
 	#tuber {
 		.left-padding-2;
@@ -227,6 +229,12 @@ header {
 
 #signOut {
 	display: none;
+}
+
+#app {
+	margin-top: 5rem;
+	margin-bottom: 3rem;
+	z-index: 1;
 }
 
 #container {
@@ -320,23 +328,20 @@ header {
 }
 .list {
 	.no-padd-or-margin;
+	display: flex;
+	flex-wrap: wrap;
 }
 .listItem {
+	flex-basis: 50%;
+	height: 90px;
+
 	display: flex;
+
 	overflow: hidden;
 	cursor: pointer;
-	line-height: @list-item-height-desk;
-	height: @list-item-height-desk;
 	background-color: @mainWhite;
 	.no-padd-or-margin;
-	.listButton {
-		float: right;
-		display: none;
-	}
-	.listinfocontainer {
-		.left-padding-2;
-		flex-grow: 1;
-	}
+
 	&.playing {
 		color: @mainColor;
 	}
@@ -348,6 +353,26 @@ header {
 		.listButton {
 			display: initial;
 		}
+	}
+
+	img {
+		flex-basis: 160px;
+		min-width: 160px;
+		width: 160px;
+		height: 90px;
+	}
+
+	.listinfocontainer {
+		.left-padding-2;
+		display: flex;
+		flex-direction: row;
+		line-height: 2rem;
+		// flex-grow: 1;
+	}
+
+	.listButton {
+		float: right;
+		display: none;
 	}
 }
 
@@ -394,15 +419,17 @@ header {
 		flex-direction: column;
 		margin: 0 auto;
 		max-width: @player-width;
-		#playerWrapper {
-			flex: 1 0 10%;
-			margin-bottom: 2rem;
-			margin-right: 0;
-		}
-		#listWrapper {
-			flex: auto;
-			overflow-y: auto
-		}
+	}
+
+	#playerWrapper {
+		flex: 1 0 10%;
+		margin-bottom: 2rem;
+		margin-right: 0;
+	}
+
+	#listWrapper {
+		flex: auto;
+		overflow-y: auto
 	}
 }
 
@@ -416,6 +443,10 @@ header {
 	#playerWrapper {
 		min-width: @player-width;
 		flex-basis: @player-width;
+	}
+
+	#lineOne {
+		cursor: default;
 	}
 
 	#title {

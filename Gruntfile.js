@@ -9,7 +9,10 @@ module.exports = function(grunt) {
 		browserify: {
 			client: {
 				src: ['./lib/js/script.js'],
-				dest: './lib/js/main.js'
+				dest: './lib/js/main.js',
+				options: {
+					transform: ['es6-templates']
+				}
 			}
 		},
 		uglify: {
